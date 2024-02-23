@@ -9,11 +9,26 @@
   <body>
     <main>
         <h1>Vunerability test</h1>  
+        <button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
     </main>
-	<script type="text/javascript">
-    document.write("token: " + Android.getUserToken());
-        console.log("imported");
-        alert("zomato vulnerabity test");
-    </script>
+
+    <script>
+      const x = document.getElementById("demo");
+      
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else { 
+          x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+      }
+      
+      function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude + 
+        "<br>Longitude: " + position.coords.longitude;
+      }
+      </script>
   </body>
 </html>
